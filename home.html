@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GA4 Demo Website</title>
+
+    <!-- Google Analytics GA4 Code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        button { padding: 10px 20px; margin: 10px 0; }
+    </style>
+</head>
+
+<body>
+    <h1>GA4 Demo Website</h1>
+    <p>This is a sample website created for Google Analytics 4 lab practice.</p>
+
+    <button onclick="trackSignup()">Sign Up</button>
+
+    <form id="contactForm">
+        <h3>Contact Us</h3>
+        <input type="text" placeholder="Name" required><br><br>
+        <input type="email" placeholder="Email" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function trackSignup() {
+            gtag('event', 'button_click', {
+                event_category: 'engagement',
+                event_label: 'signup_button'
+            });
+            alert("Signup button clicked!");
+        }
+
+        document.getElementById("contactForm").addEventListener("submit", function () {
+            gtag('event', 'form_submit', {
+                event_category: 'form',
+                event_label: 'contact_form'
+            });
+        });
+    </script>
+</body>
+</html>
